@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Create Item</title>
+	{% load staticfiles %}
+     <!-- Bootstrap -->
+          <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="{% static 'wishlist/css/create.css' %}" charset="utf-8"  />
+</head>
+
+<body>
+	<a href="{% url 'dashboard' %}">Home</a>
+	<a href="{% url 'logout' %}">Logout</a>
+	<h1>Create a New Wish List Item</h1>
+	<p>Item/Product:</p>
+	<form action="{% url 'create_item' %}" method="POST">
+		{% csrf_token %}
+		<input type="text" name="name">
+		<button type="submit">Add</button>
+	</form>
+</body>
+
+</html>

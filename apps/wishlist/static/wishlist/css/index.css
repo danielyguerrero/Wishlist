@@ -1,0 +1,19 @@
+h1 {
+	margin: 0px;
+}
+
+.wrapper{
+	background: linear-gradient(white, #62b1f7);
+	height: 800px;
+	width: auto;
+	padding: 60px;
+}
+.container{
+	width: auto;
+	height: auto;
+}
+table{
+	margin-right: auto;
+	margin-left: auto;
+
+}
