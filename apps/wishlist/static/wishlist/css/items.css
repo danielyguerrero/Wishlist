@@ -1,5 +1,11 @@
-h1 {
-	margin: 0px;
+html{
+  height: 100%;
+}
+body {
+  background: linear-gradient(white, #62b1f7);
+}
+h1{
+
 }
 /*=======================================================================================*/
 /* ================================         NAVBAR         ==============================*/
@@ -60,19 +66,13 @@ h1 {
     text-align: left;
   }
 } 
-/*==================================================================================*/
+/*================================================================*/
 .wrapper{
-	background: linear-gradient(white, #62b1f7);
-	height: auto;
-	width: auto;
-
-}
-.container{
-	width: auto;
-	height: auto;
-}
-table{
-	margin-right: auto;
-	margin-left: auto;
-
+  width: auto;
+  max-width: 500px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 50px;
+  background-color: white;
 }
