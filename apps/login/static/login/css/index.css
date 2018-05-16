@@ -1,22 +1,37 @@
-body {
-	background-color: #cbcbcb;
-	text-align: center;
+html, body {
+text-align: center;
+height: auto;
+width: 100%;
 }
 h1{
-	margin-bottom: 40px;
+margin-bottom: 40px;
 }
-.lform{
-	height: 400px;
-	width: 300px;
-	display: inline-block;
-	border: 10px solid rgba(74, 154, 223, 0.6);
-
+.wrapper{
+text-align: justify;
+display: flex;
+justify-content: space-around;
+height: auto;
+width: 100%;
 }
-.rform{
-	height: 400px;
-	width: 300px;
-	display: inline-block;
-	vertical-align: top;
-	border: 10px solid rgba(74, 154, 223, 0.6);
-	margin-left: 130px;
+.regform{
+height: auto;
+width: 230px;
+display: inline-block;
+vertical-align: top;
+background-color: #ced0d3;
+border: solid black;
+border-radius: 25px;
+opacity: 0.8;
+padding: 14px;
+}
+.logform{
+height: auto;
+width: 230px;
+display: inline-block;
+vertical-align: top;
+background-color: #ced0d3;
+border: solid black;
+border-radius: 25px;
+opacity: 0.8;
+padding: 14px;
 }

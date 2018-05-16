@@ -30,7 +30,7 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <form class="lform" action="{% url 'register' %}" method="post">
+            <form class="regform" action="{% url 'register' %}" method="post">
                 {% csrf_token %}
                 <h3>Register</h3>
                 <p>Name:</p>
@@ -47,7 +47,7 @@
                     <input type="submit" value="Register" />
                 </p>
             </form>
-            <form class="rform" action="{% url 'login' %}" method="post">
+            <form class="logform" action="{% url 'login' %}" method="post">
                 {% csrf_token %}
                 <h3>Login</h3>
                 <p>Email:</p>
