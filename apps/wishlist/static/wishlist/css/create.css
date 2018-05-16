@@ -1,5 +1,5 @@
 html{
-  height: 100%;
+  height: auto;
 }
 body {
   background: linear-gradient(white, #62b1f7);
@@ -66,11 +66,18 @@ body {
 } 
 /*================================================================*/
 .wrapper{
-  height: 100%;
-  width: auto;
-
+height: auto;
+width: auto;
+max-width: 535px;
+margin-right: auto;
+margin-left: auto;
+margin-top: 20px;
+background-color: white;
+font-size: 16px;
+border-radius: 39px;
+padding: 37px;
+border: solid black 2px;
 }
-
 
 
 
