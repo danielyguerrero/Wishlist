@@ -1,121 +1,112 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-	<title>Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% load staticfiles %}
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="{% static 'wishlist/css/index.css' %}" charset="utf-8"  />
-    <!-- jQuery Link -->
-    <script src="{% static "wishlist/js/index.js" %}"></script>
-</head>
-
-<body>
-<!-- ===============    NAVBAR    ===================== -->
-
-    <div class="topnav" id="myTopnav">
-        
-        <a href="{% url 'dashboard' %}" class="active">Welcome, {{ user.name }}!</a>
-
-        <a href="{% url 'create_item' %}" %}"><span class="glyphicon glyphicon-plus"></span> Add Item </a>
-
-        <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
-        
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-
-    </div>
-	<div class="wrapper">
-<!-- ===================    NAVBAR    ===================-->
-		<div class="container">
-<!--=================================================================================================-->
-<!--                                     YOUR WISHLIST                                               -->
-<!--=================================================================================================-->
-		<h3>Your Wish List:</h3>
-		<table class="table">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">Item</th>
-					<th scope="col">Added by</th>
-					<th scope="col">Date Added</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for item in user.wishes.all %}
-				<tr>
-					<td><a href='wish_items/{{item.id}}'> {{ item.name }}</a></td>
-					<td>
-						<i class="fa fa-user-circle" style="font-size:25px;"></i>
-						{{ item.added_by.name }}
-					</td>
-					<td>
-						<i class="fa fa-calendar" style="font-size:25px;"></i>
-						{{ item.created_at }}
-					</td>
-					<td>
-						<a href='removewish/{{item.id}}'> 
-							<i class="fa fa-minus-square-o" style="font-size:25px;"></i>
-							Remove from my Wishlist
-						</a>
-						 <br> 
-						 <a href='delete/{{item.id}}'>
-						 	<i class="fa fa-trash" style="font-size:25px;"></i>
-
-						 	Delete
-						 </a>
-						</td>
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-<!--=================================================================================================-->
-<!--                                     OTHERS WISHLIST                                               -->
-<!--=================================================================================================-->
-
-		<h3>Other Users' Wish List:</h3>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Item</th>
-					<th>Added by</th>
-					<th>Date Added</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for item in notwished %}
-					<tr>
-						<td><a href='wish_items/{{item.id}}'> {{ item.name }}</a></td>
-						<td>
-							<i class="fa fa-user" style="font-size:25px;"></i>
-							{{ item.added_by.name }}
-						</td>
-						<td>
-							<i class="fa fa-calendar" style="font-size:25px;"></i>
-							{{ item.created_at }}
-						</td>
-						<td>
-							<a href='addwish/{{item.id}}'>
-								<i class="fa fa-check-square-o" style="font-size:25px;"></i>
-								Add to my Wishlist
-							</a>
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+	<head>
+		<title>Dashboard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% load staticfiles %}
+		<!-- Bootstrap -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- Icon library -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- CSS Link -->
+		<link rel="stylesheet" href="{% static 'wishlist/css/index.css' %}" charset="utf-8"  />
+		<!-- jQuery Link -->
+		<script src="{% static "wishlist/js/index.js" %}"></script>
+	</head>
+	<body style="
+		background: url('/static/wishlist/img/background.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;"
+		height="auto"
+		width="100%" >
+		<!-- ===============    NAVBAR    ===================== -->
+		<div class="topnav" id="myTopnav">
+			
+			<a href="{% url 'dashboard' %}" class="active">Welcome, {{ user.name }}!</a>
+			<a href="{% url 'create_item' %}" %}"><span class="glyphicon glyphicon-plus"></span> Add Item </a>
+			<a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+			
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 		</div>
-	</div>
-</body>
-
+		<!-- ===============    END NAVBAR    ===================== -->
+		<div class="wrapper">
+			<h3>Your Wish List:</h3>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Item</th>
+						<th scope="col">Added by</th>
+						<th scope="col">Date Added</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in user.wishes.all %}
+						<tr>
+							<td><a href='wish_items/{{item.id}}'> {{ item.name }}</a></td>
+							<td>
+								<i class="fa fa-user-circle" style="font-size:25px;"></i>
+								{{ item.added_by.name }}
+							</td>
+							<td>
+								<i class="fa fa-calendar" style="font-size:25px;"></i>
+								{{ item.created_at }}
+							</td>
+							<td>
+								<a href='removewish/{{item.id}}'>
+									<i class="fa fa-minus-square-o" style="font-size:25px;"></i>
+									Remove from my Wishlist
+								</a>
+								<br>
+								<a href='delete/{{item.id}}'>
+									<i class="fa fa-trash" style="font-size:25px;"></i>
+									Delete
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<!--=================================================================================================-->
+			<!--                                     OTHERS WISHLIST                                               -->
+			<!--=================================================================================================-->
+			<h3>Other Users' Wish List:</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Item</th>
+						<th>Added by</th>
+						<th>Date Added</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in notwished %}
+						<tr>
+							<td><a href='wish_items/{{item.id}}'> {{ item.name }}</a></td>
+							<td>
+								<i class="fa fa-user" style="font-size:25px;"></i>
+								{{ item.added_by.name }}
+							</td>
+							<td>
+								<i class="fa fa-calendar" style="font-size:25px;"></i>
+								{{ item.created_at }}
+							</td>
+							<td>
+								<a href='addwish/{{item.id}}'>
+									<i class="fa fa-check-square-o" style="font-size:25px;"></i>
+									Add to my Wishlist
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</body>
 </html>
